@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %} search error-404 {% endblock title %}
+{% block blogactive %} active {% endblock blogactive %}
+{% block body %}
+<div class="container my-4 ">
+<h1 >Search Results : </h1>
+{% if query == "" %}
+Your search - {{query|truncatechars:50}} ... - did not match any documents.
+Suggestions:
+<ul><li>
+Make sure that all words are spelled correctly.</li>
+<li>Try different keywords.</li>
+<li>Try more general keywords.</li></ul>
+{% endif %} 
+</div>
+
+
+{% endblock body %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %} contact-us {% endblock title %}
+{% block contactactive %} active {% endblock contactactive %}
+{% block body %}
+<form method="post" action="/Contact">
+<div class="container my-4">
+{% csrf_token %}
+
+   <h2>Contact us</h2>
+   <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Email address</label>
+  <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+</div>
+
+<br></br>
+
+   <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label"><h3>Phone no </h3></label>
+  <input type="phone" class="form-control" id="phone" name="phone" placeholder="Phone no">
+</div>
+<br><br>
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Write your Query :</label>
+  <textarea class="form-control" id="query" name="query" rows="3" ></textarea>
+</div>
+<button class ="btn btn-primary">Submit</button>
+</div>
+</form>
+
+
+
+
+<footer class="container">
+    <p class="float-end"><a href="#"></a></p>
+    <p>Abhinav-tyagi<br>Copyright company©2021–2026 , Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+	
+  </footer>
+  
+{% endblock body %}

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %} search Result {% endblock title %}
+{% block blogactive %} active {% endblock blogactive %}
+{% block body %}
+
+<div class="container my-4 ">
+<h1 >Search Results : </h1>
+
+
+{% if allPosts|length < 1 %}
+Your search - <b>{{query|truncatechars:50}} </b>... - did not match any documents.
+Suggestions:
+<ul><li>
+Make sure that all words are spelled correctly.</li>
+<li>Try different keywords.</li>
+<li>Try more general keywords.</li></ul>
+{% endif %}
+
+{% if query == "" %}
+Your search - {{query|truncatechars:50}} ... - did not match any documents.
+Suggestions:
+<ul><li>
+Make sure that all words are spelled correctly.</li>
+<li>Try different keywords.</li>
+<li>Try more general keywords.</li></ul>
+{% endif %}
+
+
+
+
+{% for  post in allPosts %}
+    <div class="col-md-60 my-4 bg-light">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-success">{{post.author}}</strong>
+          <h3 class="mb-0">{{post.title}} </h3>
+          <div class="mb-1 text-muted">{{ post.timestamp}}</div>
+          <p class="mb-auto">{{post.content| truncatechars:150}}</p><br><br>
+          <a href="/blog/{{post.slug}}">
+          <button type="button" class="btn btn-outline-secondary">Continue reading</button></a>
+        </div>
+      </div>
+    </div>
+{% endfor %}
+   
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+      <a class="page-link" href="/blog/{{post.slug}}" tabindex="-1">Previous</a>
+ 
+    <li class="page-item"><a class="page-link" href="/blog/{{post.slug}}">1</a></li>
+    <li class="page-item"><a class="page-link" href="/blog/{{post.slug}}">2</a></li>
+    <li class="page-item"><a class="page-link" href="/blog/{{post.slug}}">3</a></li>
+  
+    <li class="page-item">
+      <a class="page-link" href="/blog/{{post.slug}}">Next</a>
+    </li>
+  </ul>
+</nav>
+
+</div>
+{% endblock body %}
